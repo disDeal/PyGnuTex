@@ -4,8 +4,6 @@ channels:
   - conda-forge
 dependencies:
   - python
-  - pandas
-  - bokeh
   - rise
   - aprox
   - gnuGraph
