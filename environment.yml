@@ -1,0 +1,12 @@
+name: rise-environment
+channels:
+  - damianavila82
+  - conda-forge
+dependencies:
+  - python
+  - pandas
+  - bokeh
+  - rise
+  - aprox
+  - gnuGraph
+  - numpy 
