@@ -5,6 +5,9 @@ channels:
 dependencies:
   - python
   - rise
-  - aprox
-  - gnuGraph
   - numpy 
+  - scipy
+  - os
+  - IPython.display
+  - matplotlib
+  - math
