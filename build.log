@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2019.10.20)  8 NOV 2019 15:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2019.10.20)  8 NOV 2019 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1904,43 +1904,43 @@ Package microtype Info: Loading generic protrusion settings for font family
 \gptboxheight=\skip47
 \gptboxwidth=\skip48
 \gptboxtext=\box29
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 120.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 116.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 120.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 116.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 120
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 116
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 120.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 116.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 120
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 116
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    Try loading font information for U+txsya on input line 120.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 116.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 120.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 116.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
@@ -1950,11 +1950,25 @@ Missing character: There is no ¹ in font txsy!
 Missing character: There is no ¹ in font txsy!
 File: testplot.eps Graphic file (type eps)
  <testplot.eps>
+Missing character: There is no Í in font txex!
+Missing character: There is no ¯ in font txex!
+Missing character: There is no ¹ in font txsy!
+Missing character: There is no º in font txsy!
+Missing character: There is no ¹ in font txsy!
+Missing character: There is no º in font txsy!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
+Missing character: There is no = in font txmia!
 Missing character: There is no = in font txmia!
 Missing character: There is no » in font txsy!
 Missing character: There is no ¼ in font txsy!
 )
-Overfull \hbox (81.68271pt too wide) in paragraph at lines 123--18
+Overfull \hbox (81.68271pt too wide) in paragraph at lines 119--18
  [] 
  []
 
@@ -1972,6 +1986,6 @@ Here is how much of TeX's memory you used:
  12674 multiletter control sequences out of 15000+600000
  18384 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,43p,999b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,11n,43p,999b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on build.dvi (1 page, 1484 bytes).
+Output written on build.dvi (1 page, 1880 bytes).
