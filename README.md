@@ -35,4 +35,4 @@ gnuGraph.SciPlot(o1, o2, a1, a2, h, hh,
 gnuGraph.dispSVG("crap2PDF.svg")
 ```
 
-![график](./Gnuplot/crap2PDF.svg)
+![график](./crap2PDF.svg)
