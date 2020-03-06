@@ -15,7 +15,7 @@ def SciPlot(*vect, aprx=[3, 2], xlabel="x-axis", ylabel="y-axis", title="", name
     num = len(vect)
     half = num/2
     if num % 2 != 0:
-        print("input the right number of variables")
+        print("wrong number of variables")
         pass
 
     for i in range(int(half)):
@@ -60,70 +60,88 @@ def SciPlot(*vect, aprx=[3, 2], xlabel="x-axis", ylabel="y-axis", title="", name
         pg.s([imprtArr[2*i], imprtArr[2*i + 1]],
              filename='dataAprx{0}.out'.format(i))
 
-    commText = 'set autoscale; set grid\n\
-set mxtics 4\n\
-set mytics 4\n\
-set tics nomirror\n\
-set border 3 front lw 3\n\
-set style line 1 lc rgb "#8b1a0e" pt 1 ps 1 lt 1 lw 3\n\
-set style line 2 lc rgb "#5e9c36" pt 6 ps 1 lt 1 lw 3\n\
-set title "{0}"\n\
-set xlabel "{1}\\n{3}"; set ylabel "{2}"\n\
-set terminal epslatex newstyle color solid size {4}cm, {5}cm # размеры рисунка можно варьировать как угодно\n\
-set output "testplot.tex"\n'.format(title, xlabel, ylabel, label, size[0], size[1])
+# commText = 'set autoscale; set grid\n\
+# set mxtics 4\n\
+# set mytics 4\n\
+# set tics nomirror\n\
+# set border 3 front lw 3\n\
+# set style line 1 lc rgb "#8b1a0e" pt 1 ps 1 lt 1 lw 3\n\
+# set style line 2 lc rgb "#5e9c36" pt 6 ps 1 lt 1 lw 3\n\
+# set title "{0}"\n\
+# set xlabel "{1}\\n{3}"; set ylabel "{2}"\n\
+# set terminal epslatex newstyle color solid size {4}cm, {5}cm # размеры рисунка можно варьировать как угодно\n\
+# set output "testplot.tex"\n'.format(title, xlabel, ylabel, label, size[0], size[1])
 
-    firstPlot = 'plot "dataOrig0.out" u 1:2 w p ps 3 t "{0}",\\\n'.format(
+    tex_header = '\documentclass[12pt]{article}\n\
+% Подключаем всяко-разное, задаем кодировку, язык и прочие параметры по вкусу\n\
+\\usepackage[OT1,T2A]{fontenc}\n\
+\\usepackage[utf8]{inputenc}\n\
+\\usepackage[english,russian]{babel}\n\
+\\usepackage{amsmath,amssymb,amsfonts,textcomp,latexsym,pb-diagram,amsopn}\n\
+\\usepackage{cite,enumerate,float,indentfirst}\n\
+\\usepackage{graphicx,xcolor}\n\
+% Порядку для задаем размер полей страницы, дальше это нам пригодится\n\
+\\usepackage[left=2mm, right=2mm, top=2mm, bottom=2mm]{geometry}\n\
+% Включаем Gnuplottex\n\
+\\usepackage{gnuplottex}\n\
+\\begin{document}\n\
+\\begin{figure}\n\
+  \\centering\n\
+  \\begin{gnuplot}\n\  '
+
+    commText =  "set terminal epslatex newstyle color size 17cm,8cm\n\
+   set xzeroaxis lt -1\n\
+   set yzeroaxis lt -1\n\
+   set mxtics 4\n\
+   set mytic 4\n\
+   set autoscale\n\
+   set tics nomirror out scale 0.75\n\
+   set border 3 front lw 3\n\
+   set style line 1 lt 1 lw 4 lc rgb '#4682b4' pt -1 \n\
+   set style line 2 lt 1 lw 4 lc rgb '#ee0000' pt -1 \n\
+   set style line 3 lt 1 lw 4 lc rgb '#008800' pt -1\n\
+   set style line 4 lt 1 lw 4 lc rgb '#888800' pt -1\n\
+   set style line 5 lt 1 lw 4 lc rgb '#00aaaa' pt -1\n\
+   set style line 6 lt 1 lw 4 lc rgb '#cc0000' pt -1\n\
+   set key bottom right   \n\
+   set grid xtics lc rgb '#555555' lw 1 lt 0\n\
+   set grid ytics lc rgb '#555555' lw 1 lt 0;"
+    
+    commGraph = "set title '{0}'\n\
+set xlabel '{1}'\n\
+set ylabel '{2}'\n  ".format(title, xlabel, ylabel, label, size[0], size[1])
+
+
+    firstPlot = "plot 'dataOrig0.out' u 1:2 w p ps 3 ti '{0}',\\\n".format(
         OrKeysVect[0])
 
-    orPlots = ['\t "dataOrig{0}.out" u 1:2 w p ps 3 t "{1}",\\\n'.format(
+    orPlots = ["\t 'dataOrig{0}.out' u 1:2 w p ps 3 ti '{1}',\\\n".format(
         i + 1, OrKeysVect[i+1]) for i in range(int(half) - 1)]
     SorPlots = ''
     for i in range(len(orPlots)):
         SorPlots += orPlots[i]
 
-    apPlots = ['\t "dataAprx{0}.out" u 1:2 w l lw 5 t "{1}",\\\n'.format(
+    apPlots = ["\t 'dataAprx{0}.out' u 1:2 w l lw 5 ti '{1}',\\\n".format(
         i, ApKeysVect[i]) for i in range(len(arrs))]
     SapPlots = ''
     for i in range(len(apPlots)):
         SapPlots += apPlots[i]
 
-    with open("GnuScript.gp", 'w') as outfile:
-        outfile.write(commText + firstPlot + SorPlots + SapPlots)
-
-    latexBuild = r'''\documentclass[a4paper]{extreport}
-\DeclareRobustCommand{\ttfamily}{\fontencoding{T1}\fontfamily{lmtt}\selectfont}
-\DeclareRobustCommand\sectt[1]{{\fontsize{13}{12}\bfseries\ttfamily#1}}
-\usepackage[outdir=./]{epstopdf}
-\usepackage[TS1,T2A,T1]{fontenc}
-\usepackage[babel=true]{microtype}
-\usepackage[utf8]{inputenc}
-\usepackage[english,russian]{babel}
-\usepackage{graphics}
-\usepackage{nopageno}
-\usepackage{tempora}  % Times for numbers in math mode
-\usepackage{newtxmath}  % Times in math mode
-\usepackage{txfonts} % данный пакет позволяет вносить текст в изображении
-\usepackage[usenames]{color}
-\begin{document}
-\begin{center}
-\input{testplot}
-\end{center}
-\end{document}'''
+    tex_end = '\\end{gnuplot}\n\
+\\end{figure}\n\
+\\end{document}'
 
     with open("build.tex", 'w') as outfile:
-        outfile.write(latexBuild)
+        outfile.write(tex_header + commText + commGraph + firstPlot + SorPlots + SapPlots + tex_end)
 
-    scriptText = 'gnuplot GnuScript.gp\n\
-latex build.tex; dvipdf build.dvi\n\
-pdfcrop build.pdf {0}.pdf\n\
-pdf2ps {0}.pdf {0}.ps\n\
-ps2eps -f {0}.ps\n\
-eps2svg {0}.eps {0}EPS.svg\n\
-pdf2svg {0}.pdf {0}PDF.svg\n\
-rm build.dvi build.aux {0}.ps build.pdf'.format(name)
+    scriptText = 'latex --shell-escape build.tex;\n\
+dvips build.dvi;\n\
+ps2pdf build.ps;\n\
+pdfcrop build.pdf;\n\
+pdftoppm build-crop.pdf {0} -png;\n'.format(name)
 
     with open("script.sh", 'w') as outfile:
         outfile.write(scriptText)
 
-    os.system("gnome-terminal -- chmod u+x script.sh; ./script.sh")
+    os.system("chmod +x script.sh; ./script.sh")
     return 1
