@@ -138,6 +138,7 @@ set ylabel '{2}'\n  ".format(title, xlabel, ylabel, label, size[0], size[1])
 dvips build.dvi;\n\
 ps2pdf build.ps;\n\
 pdfcrop build.pdf;\n\
+pdf2svg build.pdf {0}.svg\n\
 pdftoppm build-crop.pdf {0} -png;\n'.format(name)
 
     with open("script.sh", 'w') as outfile:
