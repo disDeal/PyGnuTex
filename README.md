@@ -1,6 +1,6 @@
 # PyGnuTex
 
-### Пример использования
+### Usage
 
 ```python
 
